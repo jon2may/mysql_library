@@ -17,10 +17,17 @@ echo "Connected successfully ! <br> <br>";
 
 //Perform query : https://www.youtube.com/watch?v=HQOS3V9nyEQ&ab_channel=Codecourse
 
-if($result = $conn->query("SELECT * FROM books")) {
+if($result = $conn->query("SELECT books.*, authors.author, nationalities.nationality 
+FROM books 
+LEFT JOIN authors 
+ON books.author_id = authors.id
+LEFT JOIN nationalities
+ON books.author_nationality_id = nationalities.id ")) {
+
+
   if($result->num_rows) {
     while ($row = $result->fetch_assoc()) {
-      echo $row['tittle'], ' - ', $row['release_date'],'<br>';
+      echo $row['tittle'], ' - ', $row['author'],' - ', $row['nationality'], ' - ' ,$row['release_date'],'<br>';
     }
     $result -> free_result();
   }
