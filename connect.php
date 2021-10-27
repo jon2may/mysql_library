@@ -20,7 +20,7 @@ echo "Connected successfully ! <br> <br>";
 if($result = $conn->query("SELECT * FROM books")) {
   if($result->num_rows) {
     while ($row = $result->fetch_assoc()) {
-      echo $row['tittle'], ' - ', $row['author_id'], ' - ', $row['release_date'],' - ', $row['author_nationality_id'],'<br>';
+      echo $row['tittle'], ' - ', $row['release_date'],'<br>';
     }
     $result -> free_result();
   }
