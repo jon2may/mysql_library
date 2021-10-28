@@ -4,10 +4,10 @@ require 'connect.php';
 if (isset($_POST["save"])) {
 
     // Récupérer les données
-    $tittle =  $_REQUEST['tittle'];
+    $tittle = $_REQUEST['tittle'];
     $author_id = $_REQUEST['author'];
     $author_nationality_id = $_REQUEST['nationality'];
-    $release_date =  $_REQUEST['release_date'];
+    $release_date = $_REQUEST['release_date'];
 
     // Insérer les données dans la table 'books'
     $sql = "INSERT INTO books (tittle, author_id, author_nationality_id, release_date) VALUES ('$tittle', 
@@ -15,8 +15,10 @@ if (isset($_POST["save"])) {
 
     // Message d'information
     if(mysqli_query($conn, $sql)){
-                echo "Votre livre a été ajouté !";
-                
+                echo "Super ! Le livre \" $tittle \" a été ajouté à la bibliothèque.";
+                header( "refresh:2; url=read.php" );
+                exit();
+
             } else{
                 echo "ERROR: Hush! Sorry $sql. " 
                     . mysqli_error($conn);
@@ -33,13 +35,12 @@ $result_nat = $conn->query("SELECT * FROM nationalities");
 mysqli_close($conn);
 ?>
 
-
 <h1>Ajouter un nouveau livre</h1>
 
 <form method="post">
 
     <label for="tittle">Titre du livre :</label>
-    <input type="text" name="tittle" size="50" autofocus>
+    <input type="text" name="tittle" size="50" autofocus required>
 
     <label for="author">Auteur :</label>
     <select name="author">
@@ -60,7 +61,7 @@ mysqli_close($conn);
     </select>
 
     <label for="release_date">Année de publication :</label>
-    <input type="number" name="release_date" maxlength="4">
+    <input type="number" name="release_date" maxlength="4" required>
 
     <input name="save" type="submit" value="Ajouter à la bibliothèque" />
 
