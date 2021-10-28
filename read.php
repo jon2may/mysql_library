@@ -22,3 +22,7 @@ ORDER BY release_date ")) {
   }
 }
 ?>
+
+<form action="http://localhost:8000/create.php" method="get" target="_blank">
+         <button type="submit">Ajouter un livre à la bibliothèque</button>
+      </form>
