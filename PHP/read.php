@@ -24,7 +24,7 @@ LEFT JOIN nationalities
 ON books.author_nationality_id = nationalities.id
 ORDER BY release_date")) { ?>
 
-<table>
+<table id=customers>
   <thead>
     <tr>
       <th>Titre</th>
@@ -34,9 +34,10 @@ ORDER BY release_date")) { ?>
     </tr>
   </thead>
 
+  <tbody>
   <?php while ($row = $result->fetch_assoc()) {?>
 
-  <tbody>
+ 
     <tr>
       <td><?php echo $row['tittle']; ?></td>
       <td><?php echo $row['author']; ?></td>
@@ -44,18 +45,17 @@ ORDER BY release_date")) { ?>
       <td><?php echo $row['release_date']; ?></td>
       <td><a href="delete.php?id=<?php echo $row['id']; ?>">Supprimer ce livre</a></td>
       <td><a href="update.php?id=<?php echo $row['id']; ?>">Modifier ce livre</a></br></td>
-
     </tr>
-  </tbody>
-</table>
+ 
 
 <?php }
     $result -> free_result();
   }
 ?>
-
+ </tbody>
+</table>
 <form action="create.php" method="get" target="_blank">
-  <button type="submit">Ajouter un livre à la bibliothèque</button>
+  <button type="submit" class="button button2">Ajouter un livre à la bibliothèque</button>
 </form>
 
 </body>
