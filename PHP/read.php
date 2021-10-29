@@ -36,8 +36,6 @@ ORDER BY release_date")) { ?>
 
   <tbody>
   <?php while ($row = $result->fetch_assoc()) {?>
-
- 
     <tr>
       <td><?php echo $row['tittle']; ?></td>
       <td><?php echo $row['author']; ?></td>
@@ -46,9 +44,7 @@ ORDER BY release_date")) { ?>
       <td><a href="delete.php?id=<?php echo $row['id']; ?>">Supprimer ce livre</a></td>
       <td><a href="update.php?id=<?php echo $row['id']; ?>">Modifier ce livre</a></br></td>
     </tr>
- 
-
-<?php }
+  <?php }
     $result -> free_result();
   }
 ?>
