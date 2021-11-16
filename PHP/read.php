@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,6 +14,21 @@
 
 <body>
 <h1>Liste des livres de la bibliothèque</h1>
+
+
+<?php 
+if (isset($_SESSION["login"])){
+  echo "Bienvenue ". $_SESSION["login"];
+}
+  else {
+    echo "Bienvenue !";
+  }
+?>
+
+<div>
+  <button class="button button2"><a href="login.php">Se connecter</a></button>
+  <button class="button button2"><a href="logout.php">Se déconnecter</a></button>
+</div>
 
 <?php
 require 'connect.php';

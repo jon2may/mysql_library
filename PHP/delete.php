@@ -1,5 +1,14 @@
 <?php
+session_start();
+
 require 'connect.php';
+
+if (isset($_SESSION["login"])){}
+    else {
+        echo "Vous devez vous identifier pour accéder à cette page !";
+        header("refresh:3; login.php");
+        exit();
+    }
 
 // Récupérer les données
 $id = $_REQUEST['id'];
